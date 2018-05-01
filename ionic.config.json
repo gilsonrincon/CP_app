@@ -1,0 +1,8 @@
+{
+  "name": "crecimiento_personal_app",
+  "app_id": "97826b1d",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
