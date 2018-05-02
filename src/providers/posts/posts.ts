@@ -10,6 +10,7 @@ import 'rxjs/add/operator/map';
 */
 @Injectable()
 export class PostsProvider {
+  posts: any;
 
   constructor(public http: HttpClient) {
     console.log('Hello PostsProvider Provider');
@@ -17,7 +18,7 @@ export class PostsProvider {
 
   getPosts(){
     this.http.get('https://gilsonrincon.info/wp-json/wp/v2/posts').map(res => res).subscribe(data => {
-      console.log(data);
+      this.posts = data;
     });
   }
 }

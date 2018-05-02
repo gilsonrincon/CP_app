@@ -24,6 +24,7 @@ export class HomePage {
   	}
 
     this.postProvider.getPosts();
+    console.log(this.postProvider.posts);
   }
 
   ItemSelected(item){
