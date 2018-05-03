@@ -18,10 +18,13 @@ export class HomePage {
       for(let key in res){
         let post = {title: res[key].title.rendered,
                     intro: res[key].excerpt.rendered,
-                    media_id: res[key].featured_media
+                    media_id: res[key].featured_media,
+                    media:
               };
         let postMedia = {};
-        this.postProvider.getPostMedia(res[key].featured_media).subscribe(data => console.log(data));
+        //this.postProvider.getPostMedia(res[key].featured_media).subscribe(data => console.log(data));
+        this.postProvider.getPostMedia(res[key].featured_media).subscribe(data =>
+          });
         this.postsList.push(post);
       }
     });
