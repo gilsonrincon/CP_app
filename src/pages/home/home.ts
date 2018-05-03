@@ -20,6 +20,8 @@ export class HomePage {
                     intro: res[key].excerpt.rendered,
                     media_id: res[key].featured_media
               };
+        let postMedia = {};
+        this.postProvider.getPostMedia(res[key].featured_media).subscribe(data => console.log(data));
         this.postsList.push(post);
       }
     });
@@ -27,7 +29,7 @@ export class HomePage {
 
   postImage(id){
     let imgUrl = this.postProvider.baseUrl;
-    
+
     return "";
   }
 
