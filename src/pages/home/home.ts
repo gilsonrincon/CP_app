@@ -8,27 +8,27 @@ import { PostsProvider } from '../../providers/posts/posts';
   templateUrl: 'home.html'
 })
 export class HomePage {
-	items: any[];
-	texto: string;
+
   postsList: any[];
 
   constructor(public navCtrl: NavController, private postProvider: PostsProvider) {
-  	this.items = [];
-  	this.texto = "prueba";
-
-  	for(let i = 0; i<= 10; i++){
-  		this.items.push({
-  			text: "Item N"+i,
-  			id: i
-  		});
-  	}
-
-    this.postProvider.getPosts().subscribe(res => {this.postsList = res; console.log(this.postsList)});
-
+    this.postProvider.getPosts().subscribe(res => {
+      //console.log(res);
+      this.postsList = [];
+      for(let key in res){
+        let post = {title: res[key].title.rendered,
+                    intro: res[key].excerpt.rendered,
+                    media_id: res[key].featured_media
+              };
+        this.postsList.push(post);
+      }
+    });
   }
 
-  ItemSelected(item){
-  	this.navCtrl.push(PostPage, { item: item });
+  postImage(id){
+    let imgUrl = this.postProvider.baseUrl;
+    
+    return "";
   }
 
 }
