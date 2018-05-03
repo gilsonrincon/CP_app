@@ -5,9 +5,12 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-list>
-    <button ion-item *ngFor="let item of items" (click)="ItemSelected(item)">
-      {{ item.text }}
-    </button>
-  </ion-list>
+  <ion-card *ngFor="let post of postsList">
+    <ion-card-header>
+      {{ post.title.rendered }}
+    </ion-card-header>
+    <ion-card-content>
+      {{ post.except }}
+    </ion-card-content>
+  </ion-card>
 </ion-content>

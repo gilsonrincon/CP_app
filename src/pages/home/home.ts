@@ -10,7 +10,7 @@ import { PostsProvider } from '../../providers/posts/posts';
 export class HomePage {
 	items: any[];
 	texto: string;
-  posts: string;
+  postsList: any[];
 
   constructor(public navCtrl: NavController, private postProvider: PostsProvider) {
   	this.items = [];
@@ -23,8 +23,8 @@ export class HomePage {
   		});
   	}
 
-    this.postProvider.getPosts();
-    console.log(this.postProvider.posts);
+    this.postProvider.getPosts().subscribe(res => {this.postsList = res; console.log(this.postsList)});
+
   }
 
   ItemSelected(item){

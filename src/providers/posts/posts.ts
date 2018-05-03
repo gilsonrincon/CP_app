@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/do';
 
 /*
   Generated class for the PostsProvider provider.
@@ -10,15 +11,13 @@ import 'rxjs/add/operator/map';
 */
 @Injectable()
 export class PostsProvider {
-  posts: any;
+  posts: any[];
 
   constructor(public http: HttpClient) {
-    console.log('Hello PostsProvider Provider');
+
   }
 
   getPosts(){
-    this.http.get('https://gilsonrincon.info/wp-json/wp/v2/posts').map(res => res).subscribe(data => {
-      this.posts = data;
-    });
+    return this.http.get('https://gilsonrincon.info/wp-json/wp/v2/posts');
   }
 }
