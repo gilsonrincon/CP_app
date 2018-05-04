@@ -19,21 +19,18 @@ export class HomePage {
         let post = {title: res[key].title.rendered,
                     intro: res[key].excerpt.rendered,
                     media_id: res[key].featured_media,
-                    media:
+                    media_url: ""
               };
-        let postMedia = {};
-        //this.postProvider.getPostMedia(res[key].featured_media).subscribe(data => console.log(data));
-        this.postProvider.getPostMedia(res[key].featured_media).subscribe(data =>
-          });
+        this.postImage(res[key].featured_media,key);
         this.postsList.push(post);
       }
     });
   }
 
-  postImage(id){
-    let imgUrl = this.postProvider.baseUrl;
-
-    return "";
+  postImage(id, index){
+    this.postProvider.getPostMedia(id).subscribe(data => {
+      this.postsList[index].media_url = data.source_url;
+    });
   }
 
 }

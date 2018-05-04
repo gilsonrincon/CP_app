@@ -7,6 +7,7 @@
 <ion-content padding>
   <ion-card *ngFor="let post of postsList">
     <ion-card-header [innerHtml]=post.title></ion-card-header>
+    <img src="{{ post.media_url }}" alt="">
     <ion-card-content [innerHtml]=post.intro></ion-card-content>
   </ion-card>
 </ion-content>
