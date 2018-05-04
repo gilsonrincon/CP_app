@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/do';
+
 
 /*
   Generated class for the PostsProvider provider.
@@ -22,5 +21,9 @@ export class PostsProvider {
 
   getPostMedia(id){
     return this.http.get(this.baseUrl+'/media/'+id);
+  }
+
+  getPost(id){
+    return this.http.get(this.baseUrl+'/posts/'+id);
   }
 }

@@ -13,12 +13,12 @@ export class HomePage {
 
   constructor(public navCtrl: NavController, private postProvider: PostsProvider) {
     this.postProvider.getPosts().subscribe(res => {
-      //console.log(res);
       this.postsList = [];
       for(let key in res){
         let post = {title: res[key].title.rendered,
                     intro: res[key].excerpt.rendered,
                     media_id: res[key].featured_media,
+                    id: res[key].id,
                     media_url: ""
               };
         this.postImage(res[key].featured_media,key);
@@ -28,8 +28,15 @@ export class HomePage {
   }
 
   postImage(id, index){
+    //console.log(index);
     this.postProvider.getPostMedia(id).subscribe(data => {
       this.postsList[index].media_url = data.source_url;
+    });
+  }
+
+  readMoreClick(id){
+    this.navCtrl.push(PostPage, {
+      id: id
     });
   }
 
