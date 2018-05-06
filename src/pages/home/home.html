@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Home</ion-title>
+    <ion-title>Crecimiento Personal</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -8,7 +8,7 @@
   <ion-card *ngFor="let post of postsList">
     <ion-card-header [innerHtml]=post.title></ion-card-header>
     <img src="{{ post.media_url }}" alt="">
-    <ion-card-content [innerHtml]=post.intro></ion-card-content>
-    <button ion-button (click)=readMoreClick(post.id)>Read more...</button>
+    <ion-card-content [innerHtml]=post.intro><ion-spinner></ion-spinner></ion-card-content>
+    <button ion-button full small (click)=readMoreClick(post.id)>Read more...</button>
   </ion-card>
 </ion-content>

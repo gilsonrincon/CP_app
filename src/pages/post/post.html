@@ -7,13 +7,14 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Post</ion-title>
+    <ion-title [innerHtml]=post.title></ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-	<h2>{{ post.title }}</h2>
-  <div class="" [innerHtml]=post.content></div>
+  <h2 [innerHtml]=post.title></h2>
+  <img src="{{ post.media_url }}">
+  <div class="" [innerHtml]=post.content><ion-spinner></ion-spinner></div>
 </ion-content>
