@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { PostsProvider } from '../../providers/posts/posts';
+import { Storage } from '@ionic/storage';
 
 /**
  * Generated class for the PostPage page.
@@ -19,7 +20,7 @@ export class PostPage {
 
 	post: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private postProvider: PostsProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private postProvider: PostsProvider, private storage: Storage) {
     this.post = {
       id: this.navParams.data.id,
       content: "",
