@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { PostsProvider } from '../../providers/posts/posts';
-import { Storage } from '@ionic/storage';
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 /**
  * Generated class for the PostPage page.
@@ -20,12 +20,13 @@ export class PostPage {
 
 	post: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private postProvider: PostsProvider, private storage: Storage) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private postProvider: PostsProvider, private socialSharing: SocialSharing) {
     this.post = {
       id: this.navParams.data.id,
       content: "",
       title: "",
-      media_url: ""
+      media_url: "",
+      article_url: ''
     };
 
     this.postProvider.getPost(this.post.id).subscribe(res => {
@@ -34,6 +35,7 @@ export class PostPage {
       for(let k in res_arr){
         this.post.content = res_arr[k].content.rendered;
         this.post.title = res_arr[k].title.rendered;
+        this.post.article_url = res_arr[k].link;
         this.postImage(res_arr[k].featured_media);
       }
     });
@@ -48,8 +50,7 @@ export class PostPage {
     });
   }
 
-  ionViewDidLoad() {
-
+  shareArticle(message, subject, image, url){
+    this.socialSharing.share(message, subject, image, url);
   }
-
 }

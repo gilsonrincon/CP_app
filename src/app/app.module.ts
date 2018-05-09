@@ -13,8 +13,7 @@ import { PostPage } from '../pages/post/post';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { PostsProvider } from '../providers/posts/posts';
-import { IonicStorageModule } from '@ionic/storage';
-import { Network } from '@ionic-native/network';
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 @NgModule({
   declarations: [
@@ -28,8 +27,7 @@ import { Network } from '@ionic-native/network';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpClientModule,
-    IonicStorageModule.forRoot()
+    HttpClientModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -45,7 +43,7 @@ import { Network } from '@ionic-native/network';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     PostsProvider,
-    Network
+    SocialSharing
   ]
 })
 export class AppModule {}

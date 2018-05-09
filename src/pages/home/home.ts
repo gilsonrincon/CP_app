@@ -2,9 +2,8 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { PostPage } from '../post/post';
 import { PostsProvider } from '../../providers/posts/posts';
-import { Storage } from '@ionic/storage';
+import { SocialSharing } from '@ionic-native/social-sharing';
 import 'rxjs/add/operator/map';
-import { Network } from '@ionic-native/network';
 
 @Component({
   selector: 'page-home',
@@ -13,25 +12,8 @@ import { Network } from '@ionic-native/network';
 export class HomePage {
 
   postsList: any[];
-  onLine: boolean;
-  constructor(public navCtrl: NavController, private postProvider: PostsProvider, private storage: Storage, private network: Network) {
-    this.onLine = false;
-  }
-
-  ionViewDidEnter(){
-    console.log('evento');
-    this.network.onConnect().subscribe(data => {
-      this.onLine = true;
-      console.log(data);
-    }, error => {
-      console.log(error);
-    });
-    this.network.onDisconnect().subscribe(data => {
-      this.onLine = false;
-      console.log(data);
-    }, error => {
-      console.log(error)
-    });
+  constructor(public navCtrl: NavController, private postProvider: PostsProvider, private socialSharing: SocialSharing) {
+    
   }
 
   ionViewDidLoad(){
@@ -42,7 +24,8 @@ export class HomePage {
                     intro: res[key].excerpt.rendered,
                     media_id: res[key].featured_media,
                     id: res[key].id,
-                    media_url: ""
+                    media_url: "",
+                    article_url: res[key].link
               };
         this.postImage(res[key].featured_media,key);
         this.postsList.push(post);
@@ -57,8 +40,6 @@ export class HomePage {
       for(let k in data2){
           this.postsList[index].media_url = data2[k].guid.rendered;
       }
-
-      this.storage.set('postsList', this.postsList);
     });
   }
 
@@ -66,5 +47,9 @@ export class HomePage {
     this.navCtrl.push(PostPage, {
       id: id
     });
+  }
+
+  shareArticle(message, subject, image, url){
+    this.socialSharing.share(message, subject, image, url);
   }
 }
