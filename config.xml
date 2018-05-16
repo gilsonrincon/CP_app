@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="crecimientopersonal.gilsonrincon.app" version="1.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="crecimientopersonal.gilsonrincon.app" version="1.0.2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Crecimiento Personal</name>
     <description>Artículos y recursos útiles para el crecimiento personal</description>
     <author email="contacto@gilsonrincon.info" href="https://gilsonrincon.info/">Gilson Rincón</author>
@@ -87,4 +87,11 @@
     <allow-navigation href="http://192.168.0.2:8100" />
     <engine name="android" spec="7.0.0" />
     <engine name="ios" spec="~4.5.4" />
+    <plugin name="phonegap-plugin-push" spec="^2.1.3">
+        <variable name="FCM_VERSION" value="11.6.2" />
+        <variable name="SENDER_ID" value="1017167025255" />
+    </plugin>
+    <platform name="android">
+        <resource-file src="google-services.json" target="app/google-services.json" />
+    </platform>
 </widget>

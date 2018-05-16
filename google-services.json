@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "1017167025255",
+    "firebase_url": "https://crecimientopersonal-5f066.firebaseio.com",
+    "project_id": "crecimientopersonal-5f066",
+    "storage_bucket": "crecimientopersonal-5f066.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1017167025255:android:7b86810eb659bcb5",
+        "android_client_info": {
+          "package_name": "crecimientopersonal.gilsonrincon.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1017167025255-f4an3i13p1gf5uflanpiu7qj7h7fc781.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
